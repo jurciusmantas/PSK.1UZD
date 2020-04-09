@@ -6,18 +6,16 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Trains.findAll", query = "select t from Train as t")
+        @NamedQuery(name = "Destinations.findAll", query = "select d from Destination as d")
 })
-@Table(name = "trains")
+@Table(name = "destinations")
 @Getter @Setter
-public class Train implements Serializable {
+public class Destination implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,25 +24,18 @@ public class Train implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = {
-        CascadeType.PERSIST,
-        CascadeType.MERGE
-    })
-    @JoinTable(name = "train_additionaldata",
-        joinColumns = @JoinColumn(name = "train_id"),
-        inverseJoinColumns = @JoinColumn(name = "additionaldata_id")
-    )
-    private List<AdditionalData> additionalData = new ArrayList<>();
+    @Column(name = "distance_from_station")
+    private float distanceFromStation;
 
-    @OneToMany(mappedBy = "train")
+    @OneToMany(mappedBy = "destination")
     Set<Schedule> schedule;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Train train = (Train) o;
-        return Objects.equals(name, train.name);
+        Destination dest = (Destination) o;
+        return Objects.equals(name, dest.name);
     }
 
     @Override
@@ -52,6 +43,6 @@ public class Train implements Serializable {
         return Objects.hash(name);
     }
 
-    public Train(){
+    public Destination(){
     }
 }
