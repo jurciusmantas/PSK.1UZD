@@ -5,25 +5,19 @@
 
 <generatorConfiguration>
     <context id="TrainsDB" targetRuntime="MyBatis3Simple">
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/psk.uzd"
-                        userId="root"
-                        password="123123">
-        </jdbcConnection>
-
+        <jdbcConnection
+            driverClass="com.mysql.cj.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/psk.uzd"
+            userId="root"
+            password="123123"
+        />
         <javaModelGenerator targetPackage="mybatis.model" targetProject="MAVEN" />
-
         <sqlMapGenerator targetPackage="usecases.mybatis.xml" targetProject="MAVEN" />
         <javaClientGenerator type="XMLMAPPER" targetPackage="mybatis.dao" targetProject="MAVEN" />
 
-
-        <table schema="public" tableName="train">
+        <table tableName="trains">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>
-        <!--<table schema="public" tableName="player">
-            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
-            <ignoreColumn column="opt_lock_version" />
-        </table>-->
     </context>
 </generatorConfiguration>

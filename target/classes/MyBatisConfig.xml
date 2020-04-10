@@ -19,6 +19,6 @@
     <mappers>
         <!--<mapper resource="mybatis.xml/TeamMapper.xml"/>
         <mapper resource="mybatis.xml/PlayerMapper.xml"/>-->
-        <mapper resource="mybatis/TrainsMapper.xml"/>
+        <mapper resource="mybatis.xml/TrainsMapper.xml"/>
     </mappers>
 </configuration>
