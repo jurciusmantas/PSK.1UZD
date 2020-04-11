@@ -8,16 +8,25 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-
-<h:head>
-    <title>Title</title>
-</h:head>
-
-<h:body>
-    <div>test</div>
-</h:body>
-
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+    <h:head>
+        <title>JavaEE 1UZD</title>
+        <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    </h:head>
+    <h:body>
+        <div class="welcome-header">
+            <h2>Welcome to GlobalTrain site!</h2>
+        </div>
+        <div class="schedule-holder">
+            <h3>Schedule</h3>
+            <div class="schedule-list">
+                <ui:repeat value="#{schedule.fullSchedule}" var="scheduleItem">
+                    <div class="schedule-list-item">#{scheduleItem.id.date}: to #{scheduleItem.destination.name} via #{scheduleItem.train.name} (#{scheduleItem.destination.distanceFromStation}km)</div>
+                </ui:repeat>
+            </div>
+        </div>
+    </h:body>
 </html>

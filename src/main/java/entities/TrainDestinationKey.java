@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 @Embeddable
@@ -17,6 +18,9 @@ public class TrainDestinationKey implements Serializable {
     @Column(name = "destination_id")
     private Integer destinationId;
 
+    @Column(name = "date")
+    private Date date;
+
     public TrainDestinationKey(){}
 
     @Override
@@ -24,11 +28,13 @@ public class TrainDestinationKey implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TrainDestinationKey key = (TrainDestinationKey) o;
-        return Objects.equals(trainId, key.trainId) && Objects.equals(destinationId, key.destinationId);
+        return Objects.equals(trainId, key.trainId)
+                && Objects.equals(destinationId, key.destinationId)
+                && Objects.equals(date, key.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(trainId, destinationId);
+        return Objects.hash(trainId, destinationId, date);
     }
 }

@@ -1,0 +1,28 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px 0px 0px 0px;
+}
+
+.welcome-header {
+    background-color: #808080;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.schedule-holder {
+    text-align: center;
+}
+
+.schedule-holder > .schedule-list {
+    text-align: center;
+    width: 100%;
+    padding-left: 37%;
+}
+
+.schedule-list > .schedule-list-item {
+    width: fit-content;
+}

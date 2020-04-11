@@ -28,9 +28,6 @@ public class Schedule implements Serializable {
     @JoinColumn(name = "destination_id")
     private Destination destination;
 
-    @Column(name = "date")
-    private Date date;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

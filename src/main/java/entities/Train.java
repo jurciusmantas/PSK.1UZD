@@ -52,6 +52,9 @@ public class Train implements Serializable {
         return Objects.hash(name);
     }
 
-    public Train(){
+    public Train(){ }
+
+    public Train(String name){
+        this.name = name;
     }
 }
