@@ -7,10 +7,49 @@
     lang="en"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
 >
-    <head/>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/trainDetails.css" />
+    </head>
     <body>
-
+        <div class="train-details-header">
+            <h2>Train #{updateTrainAdditionalData.train.name} additional data</h2>
+        </div>
+        <div class="train-detail-table-holder" style="#{updateTrainAdditionalData.train.additionalData.size() == 0 ? 'display: none' : ''}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ui:repeat value="#{updateTrainAdditionalData.train.additionalData}" var="addData">
+                        <tr>
+                            <td>#{addData.id.type}</td>
+                            <td>#{addData.value}</td>
+                        </tr>
+                    </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+        <div class="add-data-holder">
+            <h:form>
+                <div class="row">
+                    <label>Type: </label>
+                    <h:selectOneMenu value="#{updateTrainAdditionalData.newAddData.id.type}" required="true">
+                        <f:selectItems value="#{updateTrainAdditionalData.addDataTypes}" />
+                    </h:selectOneMenu>
+                </div>
+                <div class="row">
+                    <label>Value: </label>
+                    <h:inputText value="#{updateTrainAdditionalData.newAddData.value}" required="true" />
+                </div>
+                <h:commandButton value="Add new additional data" action="#{updateTrainAdditionalData.addNewAdditionalData}" />
+            </h:form>
+        </div>
     </body>
     <h:link outcome="index" value="Back to main page"/>
 </html>

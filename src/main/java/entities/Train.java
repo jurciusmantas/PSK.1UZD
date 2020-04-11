@@ -26,15 +26,12 @@ public class Train implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(cascade = {
-        CascadeType.PERSIST,
-        CascadeType.MERGE
-    })
-    @JoinTable(name = "train_additionaldata",
-        joinColumns = @JoinColumn(name = "train_id"),
-        inverseJoinColumns = @JoinColumn(name = "additionaldata_id")
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        mappedBy = "train",
+        orphanRemoval = true
     )
-    private List<AdditionalData> additionalData = new ArrayList<>();
+    private List<TrainAdditionalData> additionalData = new ArrayList<>();
 
     @OneToMany(mappedBy = "train")
     Set<Schedule> schedule;

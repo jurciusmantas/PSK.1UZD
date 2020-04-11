@@ -1,0 +1,28 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0px 0px 0px 0px;
+}
+
+.train-details-header {
+  background-color: #808080;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.add-data-holder{
+  padding-left: 100px;
+  padding-top: 100px;
+}
+
+.add-data-holder .row{
+  padding-bottom: 10px;
+}
+
+.add-data-holder .row > label{
+  min-width: 60px;
+  display: inline-block;
+}

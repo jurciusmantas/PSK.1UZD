@@ -4,9 +4,10 @@ import entities.Train;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import java.io.Serializable;
 import java.util.List;
 
-public class TrainsDAO {
+public class TrainsDAO implements Serializable {
 
     @Inject
     private EntityManager em;

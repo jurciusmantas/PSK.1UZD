@@ -1,7 +1,6 @@
 package persistence;
 
 import entities.Schedule;
-import entities.Train;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

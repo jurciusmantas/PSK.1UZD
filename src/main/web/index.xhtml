@@ -24,7 +24,10 @@
             <h3>Schedule</h3>
             <div class="schedule-list">
                 <ui:repeat value="#{schedule.fullSchedule}" var="scheduleItem">
-                    <div class="schedule-list-item">#{scheduleItem.id.date}: to #{scheduleItem.destination.name} via #{scheduleItem.train.name} (#{scheduleItem.destination.distanceFromStation}km)</div>
+                    <div class="schedule-list-item">#{scheduleItem.id.date}: to #{scheduleItem.destination.name} via
+                        <h:link value="#{scheduleItem.train.name}" outcome="trainDetails?trainId=#{scheduleItem.train.id}"/>
+                        (#{scheduleItem.destination.distanceFromStation}km)
+                    </div>
                 </ui:repeat>
             </div>
         </div>
