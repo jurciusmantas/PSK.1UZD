@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Schedule.findAll", query = "select s from Schedule as s")
+        @NamedQuery(name = "Schedule.findAll", query = "select s from Schedule as s order by s.id.date asc")
 })
 @Table(name = "schedule")
 @Getter @Setter

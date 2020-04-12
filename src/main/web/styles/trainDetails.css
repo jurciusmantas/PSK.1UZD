@@ -13,6 +13,20 @@ body {
   padding-bottom: 15px;
 }
 
+.train-detail-table-holder {
+  padding-top: 25px;
+  padding-left: 40%;
+}
+
+.train-detail-table-holder th {
+  background-color: #808080;
+}
+
+.train-detail-table-holder td, th {
+  min-width: 100px;
+  border: 1px solid black;
+}
+
 .add-data-holder{
   padding-left: 100px;
   padding-top: 100px;

@@ -12,6 +12,7 @@
 >
     <head>
         <link rel="stylesheet" type="text/css" href="styles/trainDetails.css" />
+        <script src="js/trainDetails.js" type="text/javascript"></script>
     </head>
     <body>
         <div class="train-details-header">
@@ -26,10 +27,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ui:repeat value="#{updateTrainAdditionalData.train.additionalData}" var="addData">
+                    <ui:repeat value="#{updateTrainAdditionalData.train.additionalData}" var="addData" varStatus="addDataStatus">
                         <tr>
                             <td>#{addData.id.type}</td>
-                            <td>#{addData.value}</td>
+                            <td>
+                                <input
+                                    id="add-data-input-#{addDataStatus.index}"
+                                    value="#{addData.value}"
+                                    onchange="onExistingAddDataChange('#{addData.value}', '#{addDataStatus.index}')"
+                                />
+                            </td>
+                            <td style="visibility: hidden; border: 0px">
+                                <h:form>
+                                    <input
+                                        type="hidden"
+                                        id="ih-newvalue-value-#{addDataStatus.index}"
+                                        value="#{updateTrainAdditionalData.addDataToUpdateValue}"
+                                    />
+                                    <input
+                                        type="hidden"
+                                        id="ih-newvalue-index-#{addDataStatus.index}"
+                                        value="#{updateTrainAdditionalData.addDataToUpdateIndex}"
+                                    />
+                                    <h:commandButton
+                                        value="Update"
+                                        action="#{updateTrainAdditionalData.updateAdditionalData}"
+                                        onclick="getVars('#{addDataStatus.index}')"
+                                    />
+                                </h:form>
+                            </td>
                         </tr>
                     </ui:repeat>
                 </tbody>
