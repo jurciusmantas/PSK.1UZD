@@ -1,4 +1,4 @@
-package usecases;
+package usecases.jpa;
 
 import entities.TrainAdditionalData;
 import entities.Train;
@@ -15,7 +15,6 @@ import javax.inject.Named;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

@@ -24,7 +24,9 @@
             <h3>Schedule</h3>
             <div class="schedule-list">
                 <ui:repeat value="#{schedule.fullSchedule}" var="scheduleItem">
-                    <div class="schedule-list-item">#{scheduleItem.id.date}: to #{scheduleItem.destination.name} via
+                    <div class="schedule-list-item">
+                        <label class="schedule-list">#{scheduleItem.id.date}</label>: to
+                        <h:link value="#{scheduleItem.destination.name}" outcome="destinationDetails?destinationId=#{scheduleItem.destination.id}"/> by train:
                         <h:link value="#{scheduleItem.train.name}" outcome="trainDetails?trainId=#{scheduleItem.train.id}"/>
                         (#{scheduleItem.destination.distanceFromStation}km)
                     </div>

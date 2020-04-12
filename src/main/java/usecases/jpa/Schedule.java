@@ -1,4 +1,4 @@
-package usecases;
+package usecases.jpa;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,12 +26,6 @@ public class Schedule {
     public void init(){
         loadSchedule();
     }
-
-    /*@Transactional
-    public String createSchedule(){
-        this.scheduleDAO.persist(scheduleToCreate);
-        return "index?faces-redirect=true";
-    }*/
 
     private void loadSchedule(){
         this.fullSchedule = scheduleDAO.loadAll();

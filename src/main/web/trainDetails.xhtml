@@ -11,14 +11,14 @@
     xmlns:f="http://java.sun.com/jsf/core"
 >
     <head>
-        <link rel="stylesheet" type="text/css" href="styles/trainDetails.css" />
+        <link rel="stylesheet" type="text/css" href="styles/details.css" />
         <script src="js/trainDetails.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="train-details-header">
+        <div class="detail-header">
             <h2>Train #{updateTrainAdditionalData.train.name} additional data</h2>
         </div>
-        <div class="train-detail-table-holder" style="#{updateTrainAdditionalData.train.additionalData.size() == 0 ? 'display: none' : ''}">
+        <div class="detail-table-holder" style="#{updateTrainAdditionalData.train.additionalData.size() == 0 ? 'display: none' : ''}">
             <table>
                 <thead>
                     <tr>

@@ -6,23 +6,23 @@ body {
   margin: 0px 0px 0px 0px;
 }
 
-.train-details-header {
+.detail-header {
   background-color: #808080;
   text-align: center;
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.train-detail-table-holder {
+.detail-table-holder {
   padding-top: 25px;
   padding-left: 40%;
 }
 
-.train-detail-table-holder th {
+.detail-table-holder th {
   background-color: #808080;
 }
 
-.train-detail-table-holder td, th {
+.detail-table-holder td, th {
   min-width: 100px;
   border: 1px solid black;
 }

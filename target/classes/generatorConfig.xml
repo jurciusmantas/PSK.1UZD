@@ -15,7 +15,7 @@
         <sqlMapGenerator targetPackage="usecases.mybatis.xml" targetProject="MAVEN" />
         <javaClientGenerator type="XMLMAPPER" targetPackage="mybatis.dao" targetProject="MAVEN" />
 
-        <table tableName="trains">
+        <table tableName="destinations">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
             <ignoreColumn column="opt_lock_version" />
         </table>

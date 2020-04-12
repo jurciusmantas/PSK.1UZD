@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+>
+<html
+    xml:lang="en"
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+    <head>
+        <title>Destinations</title>
+        <link rel="stylesheet" type="text/css" href="styles/details.css" />
+    </head>
+    <body>
+        <div class="details-header">
+            <h2>Destination #{destinationDetails.destination.name}</h2>
+        </div>
+        <div>
+            <h:form>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Name:</td>
+                            <td>
+                                <h:inputText value="#{destinationDetails.destination.name}" required="true" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Distance from station:</td>
+                            <td>
+                                <h:inputText value="#{destinationDetails.destination.distanceFromStation}" required="true" /> km
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h:commandButton value="Update" action="#{destinationDetails.update}" />
+            </h:form>
+        </div>
+    </body>
+</html>
