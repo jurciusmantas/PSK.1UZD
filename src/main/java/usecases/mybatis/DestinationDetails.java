@@ -1,6 +1,7 @@
 package usecases.mybatis;
 
 import lombok.Getter;
+import lombok.Setter;
 import mybatis.dao.DestinationsMapper;
 import mybatis.model.Destinations;
 
@@ -18,7 +19,7 @@ public class DestinationDetails {
     @Inject
     private DestinationsMapper destinationsMapper;
 
-    @Getter
+    @Getter @Setter
     private Destinations destination;
 
     @PostConstruct

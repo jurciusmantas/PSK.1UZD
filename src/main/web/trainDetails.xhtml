@@ -73,9 +73,13 @@
                     <label>Value: </label>
                     <h:inputText value="#{updateTrainAdditionalData.newAddData.value}" required="true" />
                 </div>
-                <h:commandButton value="Add new additional data" action="#{updateTrainAdditionalData.addNewAdditionalData}" />
+                <div class="buttons-panel">
+                    <h:commandButton value="Add new additional data" action="#{updateTrainAdditionalData.addNewAdditionalData}" />
+                </div>
             </h:form>
         </div>
+        <div class="links-panel">
+            <h:link outcome="index" value="Back to main page"/>
+        </div>
     </body>
-    <h:link outcome="index" value="Back to main page"/>
 </html>

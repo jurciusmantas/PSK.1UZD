@@ -26,3 +26,7 @@ body {
 .schedule-list > .schedule-list-item {
     width: fit-content;
 }
+
+.links-panel {
+    margin-top: 50px;
+}

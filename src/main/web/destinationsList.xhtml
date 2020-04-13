@@ -29,8 +29,8 @@
                 <tbody>
                     <ui:repeat value="#{destinationsList.allDestinations}" var="dest" varStatus="destStatus">
                         <tr>
-                            <td>#{dest.name}</td>
-                            <td>#{dest.distanceFromStation}</td>
+                            <td><h:link outcome="/destinationDetails.xhtml?destinationId=#{dest.id}" value="#{dest.name}"/></td>
+                            <td>#{dest.distanceFromStation} km</td>
                         </tr>
                     </ui:repeat>
                 </tbody>
@@ -46,9 +46,13 @@
                     <label>Distance from station: </label>
                     <h:inputText value="#{destinationsList.destToCreate.distanceFromStation}" required="true" /> km
                 </div>
-                <h:commandButton value="Add new destination" action="#{destinationsList.createDestination}" />
+                <div class="buttons-panel">
+                    <h:commandButton value="Add new destination" action="#{destinationsList.createDestination}" />
+                </div>
             </h:form>
         </div>
+        <div class="links-panel">
+            <h:link outcome="index" value="Back to main page"/>
+        </div>
     </body>
-    <h:link outcome="index" value="Back to main page"/>
 </html>

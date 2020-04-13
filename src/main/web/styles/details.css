@@ -28,8 +28,11 @@ body {
 }
 
 .add-data-holder{
-  padding-left: 100px;
-  padding-top: 100px;
+  margin-left: 40%;
+  margin-top: 100px;
+  border: 1px solid black;
+  width: fit-content;
+  padding: 10px
 }
 
 .add-data-holder .row{
@@ -37,6 +40,24 @@ body {
 }
 
 .add-data-holder .row > label{
-  min-width: 60px;
+  min-width: 175px;
   display: inline-block;
+}
+
+.buttons-panel {
+  text-align: center;
+}
+
+.buttons-panel > input {
+  width: 50%;
+  height: 25px;
+}
+
+.links-panel {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.links-panel > a {
+  display: block;
 }

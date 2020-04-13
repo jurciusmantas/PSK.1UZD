@@ -19,7 +19,7 @@
         <div class="detail-header">
             <h2>Destination #{destinationDetails.destination.name}</h2>
         </div>
-        <div>
+        <div class="add-data-holder">
             <h:form>
                 <div class="row">
                     <label>Name:</label>
@@ -29,8 +29,18 @@
                     <label>Distance from station:</label>
                     <h:inputText value="#{destinationDetails.destination.distanceFromStation}" required="true" /> km
                 </div>
-                <h:commandButton value="Upate" action="#{destinationDetails.update()}" />
+                <div class="buttons-panel">
+                    <h:commandButton
+                        class="btn"
+                        value="Upate"
+                        action="#{destinationDetails.update()}"
+                    />
+                </div>
             </h:form>
+        </div>
+        <div class="links-panel">
+            <h:link outcome="index" value="Back to main page"/>
+            <h:link outcome="destinationsList.xhtml" value="All destinations"/>
         </div>
     </body>
 </html>
