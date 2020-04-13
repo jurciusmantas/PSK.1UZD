@@ -8,12 +8,13 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Map;
 
 @Model
-public class DestinationDetails implements Serializable {
+public class DestinationDetails {
     @Inject
     private DestinationsMapper destinationsMapper;
 
@@ -32,9 +33,30 @@ public class DestinationDetails implements Serializable {
         this.destination = destinationsMapper.selectByPrimaryKey(destinationId);
     }
 
-    /*@Transactional
+    @Transactional
     public String update(){
-        destinationsMapper.updateByPrimaryKey(this.destination);
-        return "destinationsList";
-    }*/
+        String res = "index.xhtml";
+        res += "&faces-redirect=true";
+        return res;
+        /*String urlToReturn = "";
+        if (this.destination == null)
+            return "index.xhtml";
+
+        try{
+            destinationsMapper.updateByPrimaryKey(this.destination);
+            urlToReturn = "/destinationsList.xhtml?faces-redirect=true";
+        }
+        catch (OptimisticLockException e) {
+            urlToReturn = "/destinationDetails.xhtml?faces-redirect=true&destinationId=" + this.destination.getId() + "&error=optimistic-lock-exception";
+        }
+
+        if (urlToReturn == ""){
+            if (this.destination == null)
+                return "/destinationDetails.xhtml?destinationId=" + this.destination.getId() + "&faces-redirect=true";
+            else
+                return "/index.xhtml&faces-redirect=true";
+        }
+
+        return urlToReturn;*/
+    }
 }

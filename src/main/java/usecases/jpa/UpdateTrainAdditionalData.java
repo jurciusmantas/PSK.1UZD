@@ -47,8 +47,9 @@ public class UpdateTrainAdditionalData implements Serializable {
             var allAddData = this.train.getAdditionalData();
             allAddData.add(newAddData);
             trainsDAO.update(this.train);
-        } catch (OptimisticLockException e) {
-            return "/trainDetails.xhtml?faces-redirect=true&playerId=" + this.train.getId() + "&error=optimistic-lock-exception";
+        }
+        catch (OptimisticLockException e) {
+            return "/trainDetails.xhtml?faces-redirect=true&trainId=" + this.train.getId() + "&error=optimistic-lock-exception";
         }
         return "trainDetails.xhtml?trainId=" + this.train.getId() + "&faces-redirect=true";
     }
@@ -57,8 +58,9 @@ public class UpdateTrainAdditionalData implements Serializable {
     public String update(){
         try {
             this.trainsDAO.update(this.train);
-        } catch (OptimisticLockException e) {
-            return "/trainDetails.xhtml?faces-redirect=true&playerId=" + this.train.getId() + "&error=optimistic-lock-exception";
+        }
+        catch (OptimisticLockException e) {
+            return "/trainDetails.xhtml?faces-redirect=true&trainId=" + this.train.getId() + "&error=optimistic-lock-exception";
         }
         return "trainDetails.xhtml?trainId=" + this.train.getId() + "&faces-redirect=true";
     }

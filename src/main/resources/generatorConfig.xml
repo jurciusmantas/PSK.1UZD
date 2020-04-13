@@ -12,7 +12,7 @@
             password="123123"
         />
         <javaModelGenerator targetPackage="mybatis.model" targetProject="MAVEN" />
-        <sqlMapGenerator targetPackage="usecases.mybatis.xml" targetProject="MAVEN" />
+        <sqlMapGenerator targetPackage="mybatis.mappers" targetProject="MAVEN" />
         <javaClientGenerator type="XMLMAPPER" targetPackage="mybatis.dao" targetProject="MAVEN" />
 
         <table tableName="destinations">

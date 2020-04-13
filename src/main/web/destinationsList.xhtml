@@ -2,11 +2,53 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
+<html
+        xml:lang="en"
+        lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles/details.css" />
+        <script src="js/trainDetails.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="detail-header">
+            <h2>Destinations</h2>
+        </div>
+        <div class="detail-table-holder">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Distance from station</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ui:repeat value="#{destinationsList.allDestinations}" var="dest" varStatus="destStatus">
+                        <tr>
+                            <td>#{dest.name}</td>
+                            <td>#{dest.distanceFromStation}</td>
+                        </tr>
+                    </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+        <div class="add-data-holder">
+            <h:form>
+                <div class="row">
+                    <label>Name: </label>
+                    <h:inputText value="#{destinationsList.destToCreate.name}" required="true" />
+                </div>
+                <div class="row">
+                    <label>Distance from station: </label>
+                    <h:inputText value="#{destinationsList.destToCreate.distanceFromStation}" required="true" /> km
+                </div>
+                <h:commandButton value="Add new destination" action="#{destinationsList.createDestination}" />
+            </h:form>
+        </div>
+    </body>
+    <h:link outcome="index" value="Back to main page"/>
 </html>

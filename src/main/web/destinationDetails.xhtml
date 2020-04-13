@@ -8,34 +8,28 @@
     lang="en"
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
 >
     <head>
         <title>Destinations</title>
         <link rel="stylesheet" type="text/css" href="styles/details.css" />
     </head>
     <body>
-        <div class="details-header">
+        <div class="detail-header">
             <h2>Destination #{destinationDetails.destination.name}</h2>
         </div>
         <div>
             <h:form>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Name:</td>
-                            <td>
-                                <h:inputText value="#{destinationDetails.destination.name}" required="true" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Distance from station:</td>
-                            <td>
-                                <h:inputText value="#{destinationDetails.destination.distanceFromStation}" required="true" /> km
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h:commandButton value="Update" action="#{destinationDetails.update}" />
+                <div class="row">
+                    <label>Name:</label>
+                    <h:inputText value="#{destinationDetails.destination.name}" required="true" />
+                </div>
+                <div class="row">
+                    <label>Distance from station:</label>
+                    <h:inputText value="#{destinationDetails.destination.distanceFromStation}" required="true" /> km
+                </div>
+                <h:commandButton value="Upate" action="#{destinationDetails.update()}" />
             </h:form>
         </div>
     </body>
