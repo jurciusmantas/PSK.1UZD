@@ -6,6 +6,7 @@ import enums.TrainAdditionalDataType;
 import lombok.Getter;
 import lombok.Setter;
 import persistence.TrainsDAO;
+import services.AdditionalDataCheckService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -25,12 +26,15 @@ public class UpdateTrainAdditionalData implements Serializable {
     private Train train;
     private TrainAdditionalData newAddData;
     private List<TrainAdditionalData> addDataToUpdate;
-    private TrainAdditionalDataType[] addDataTypes = TrainAdditionalDataType.values();
+    private TrainAdditionalDataType[] addDataTypes;
     private Integer addDataToUpdateIndex;
     private String addDataToUpdateValue;
 
     @Inject
     private TrainsDAO trainsDAO;
+
+    @Inject
+    private AdditionalDataCheckService additionalDataCheckService;
 
     @PostConstruct
     private void init() {
@@ -38,6 +42,7 @@ public class UpdateTrainAdditionalData implements Serializable {
         Integer trainId = Integer.parseInt(requestParameters.get("trainId"));
         this.train = trainsDAO.findOne(trainId);
         this.addDataToUpdate = this.train.getAdditionalData();
+        this.addDataTypes = additionalDataCheckService.availableAddDataTypes(this.train);
         this.newAddData = new TrainAdditionalData(this.train);
     }
 
