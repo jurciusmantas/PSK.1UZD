@@ -2,7 +2,6 @@ package services.trainService;
 
 import entities.Train;
 import entities.TrainAdditionalData;
-import entities.TrainAdditionalDataKey;
 import interceptors.Logged;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +13,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+@Logged
 public class TrainsService implements ITrainService {
     @Inject
     @Setter
@@ -47,8 +47,7 @@ public class TrainsService implements ITrainService {
     }
 
     @Override
-    @Logged
-    public Integer createTrain(TrainsDto train) {
+    public int createTrain(TrainsDto train) {
         try {
             Train newTrain = new Train();
             newTrain.setName(train.getName());
@@ -59,5 +58,17 @@ public class TrainsService implements ITrainService {
         catch(Exception exc){
             return -1;
         }
+    }
+
+    @Override
+    public boolean updateTrain(int id, TrainsDto train) {
+        Train trainToUpdate = trainsDAO.findOne(id);
+        if (trainToUpdate != null){
+            trainToUpdate.setName(train.getName());
+            trainsDAO.update(trainToUpdate);
+            return true;
+        }
+
+        return false;
     }
 }

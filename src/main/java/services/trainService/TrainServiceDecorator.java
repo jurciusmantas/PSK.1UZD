@@ -3,6 +3,7 @@ package services.trainService;
 import entities.Train;
 import entities.TrainAdditionalData;
 import entities.TrainAdditionalDataKey;
+import interceptors.Logged;
 import persistence.TrainsDAO;
 import rest.contracts.TrainAdditionalDataDto;
 import rest.contracts.TrainsDto;
@@ -14,6 +15,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+@Logged
 @Decorator
 public abstract class TrainServiceDecorator implements ITrainService {
     @Inject
@@ -24,7 +26,8 @@ public abstract class TrainServiceDecorator implements ITrainService {
     @Any
     private ITrainService trainService;
 
-    public Integer createTrain(TrainsDto train){
+    public int createTrain(TrainsDto train){
+        System.out.println("TrainServiceDecorator - createTrain");
         Integer newTrainId = trainService.createTrain(train);
 
         List<TrainAdditionalDataDto> trainAddData = train.getAdditionalData();

@@ -24,7 +24,7 @@ public class TrainsController {
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getById(@PathParam("id") final Integer id) {
+    public Response getById(@PathParam("id") final int id) {
         TrainsDto train = trainsService.getTrainById(id);
         if (train == null)
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -35,10 +35,14 @@ public class TrainsController {
     @Path("/update/{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response create(@PathParam("id") final Integer id, TrainsDto train) {
-        trainsService.createTrain(train);
-        return Response.ok(train).build();
+    public Response update(@PathParam("id") final int id, TrainsDto train) {
+        boolean success = trainsService.updateTrain(id, train);
+        if (success)
+            return Response.status(Response.Status.OK).build();
+        else
+            return Response.status(Response.Status.NOT_FOUND).build();
     }
 
     @Path("/create")
@@ -51,6 +55,6 @@ public class TrainsController {
         if (newTrainId != -1)
             return Response.ok(Response.Status.OK).build();
         else
-            return Response.ok(Response.Status.INTERNAL_SERVER_ERROR).build();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     }
 }
