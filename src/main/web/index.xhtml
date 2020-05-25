@@ -32,9 +32,9 @@
                     </div>
                 </ui:repeat>
             </div>
-            <div class="row links-panel">
-                <h:link value="All destinations" outcome="destinationsList"/>
-            </div>
+            <h:form>
+                <h:commandButton value="Load all destinations" action="#{destinationsList.startLoading()}"/>
+            </h:form>
         </div>
     </h:body>
 </html>
