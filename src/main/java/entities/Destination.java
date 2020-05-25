@@ -3,6 +3,8 @@ package entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -27,6 +29,11 @@ public class Destination implements Serializable {
     @Column(name = "distance_from_station")
     private float distanceFromStation;
 
+    @Version
+    @Column(name = "version")
+    public int version;
+
+    @JsonbTransient
     @OneToMany(mappedBy = "destination")
     Set<Schedule> schedule;
 

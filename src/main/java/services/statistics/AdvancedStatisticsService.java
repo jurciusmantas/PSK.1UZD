@@ -1,6 +1,7 @@
 package services.statistics;
 
 import enums.TrainAdditionalDataType;
+import interceptors.Logged;
 import persistence.TrainAdditionalDataDAO;
 import persistence.TrainsDAO;
 import rest.contracts.StatisticsDTO;
@@ -18,6 +19,7 @@ public class AdvancedStatisticsService implements IStatisticsService {
     @Inject
     private TrainAdditionalDataDAO trainAdditionalDataDAO;
 
+    @Logged
     @Override
     public StatisticsDTO calculateStatistics() {
         StatisticsDTO statistics = new StatisticsDTO();
