@@ -1,6 +1,5 @@
 package entities;
 
-import enums.TrainAdditionalDataType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +9,8 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "TrainAdditionalData.findAll", query = "select t from TrainAdditionalData as t")
+        @NamedQuery(name = "TrainAdditionalData.findAll", query = "select t from TrainAdditionalData as t"),
+        @NamedQuery(name = "TrainAdditionalData.getTrainCountByType", query = "select count(t) from TrainAdditionalData  as t where t.id.type = :type")
 })
 @Table(name = "train_additional_data")
 @Getter @Setter

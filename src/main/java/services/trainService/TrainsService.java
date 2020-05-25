@@ -3,38 +3,34 @@ package services.trainService;
 import entities.Train;
 import entities.TrainAdditionalData;
 import interceptors.Logged;
-import lombok.Getter;
-import lombok.Setter;
 import persistence.TrainsDAO;
-import rest.contracts.TrainAdditionalDataDto;
-import rest.contracts.TrainsDto;
+import rest.contracts.TrainAdditionalDataDTO;
+import rest.contracts.TrainsDTO;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-@Logged
 public class TrainsService implements ITrainService {
     @Inject
-    @Setter
-    @Getter
     private TrainsDAO trainsDAO;
 
+    @Logged
     @Override
-    public TrainsDto getTrainById(Integer id) {
+    public TrainsDTO getTrainById(Integer id) {
         Train train = trainsDAO.findOne(id);
         if (train == null)
             return null;
 
-        TrainsDto trainsDto = new TrainsDto();
+        TrainsDTO trainsDto = new TrainsDTO();
         trainsDto.setName(train.getName());
 
         List<TrainAdditionalData> trainAdditionalData = train.getAdditionalData();
         if (trainAdditionalData != null && trainAdditionalData.size() > 0){
-            List<TrainAdditionalDataDto> trainAdditionalDataDto = new ArrayList<>();
+            List<TrainAdditionalDataDTO> trainAdditionalDataDto = new ArrayList<>();
 
             trainAdditionalData.forEach(data -> {
-                TrainAdditionalDataDto toAdd = new TrainAdditionalDataDto();
+                TrainAdditionalDataDTO toAdd = new TrainAdditionalDataDTO();
                 toAdd.setType(data.getId().getType());
                 toAdd.setValue(data.getValue());
                 trainAdditionalDataDto.add(toAdd);
@@ -46,8 +42,9 @@ public class TrainsService implements ITrainService {
         return trainsDto;
     }
 
+    @Logged
     @Override
-    public int createTrain(TrainsDto train) {
+    public int createTrain(TrainsDTO train) {
         try {
             Train newTrain = new Train();
             newTrain.setName(train.getName());
@@ -60,8 +57,9 @@ public class TrainsService implements ITrainService {
         }
     }
 
+    @Logged
     @Override
-    public boolean updateTrain(int id, TrainsDto train) {
+    public boolean updateTrain(int id, TrainsDTO train) {
         Train trainToUpdate = trainsDAO.findOne(id);
         if (trainToUpdate != null){
             trainToUpdate.setName(train.getName());

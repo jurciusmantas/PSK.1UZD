@@ -1,16 +1,15 @@
 package services.trainService;
 
 import interceptors.Logged;
-import rest.contracts.TrainsDto;
+import rest.contracts.TrainsDTO;
 import javax.enterprise.inject.Specializes;
 
-@Logged
 @Specializes
 public class UpdateTrainServiceValidation extends TrainsService {
 
+    @Logged
     @Override
-    public boolean updateTrain(int id, TrainsDto train) {
-        System.out.println("UpdateTrainServiceValidation - updateTrain");
+    public boolean updateTrain(int id, TrainsDTO train) {
 
         if (id < 1 || train == null)
             return false;
@@ -22,9 +21,9 @@ public class UpdateTrainServiceValidation extends TrainsService {
         return super.updateTrain(id, train);
     }
 
+    @Logged
     @Override
-    public int createTrain(TrainsDto train) {
-        System.out.println("UpdateTrainServiceValidation - createTrain");
+    public int createTrain(TrainsDTO train) {
         if (train == null)
             return -1;
 

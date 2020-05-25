@@ -12,4 +12,7 @@
     <decorators>
         <class>services.trainService.TrainServiceDecorator</class>
     </decorators>
+    <alternatives>
+        <class>services.statistics.AdvancedStatisticsService</class>
+    </alternatives>
 </beans>

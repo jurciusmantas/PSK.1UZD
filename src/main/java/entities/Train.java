@@ -13,7 +13,8 @@ import java.util.Set;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Trains.findAll", query = "select t from Train as t")
+        @NamedQuery(name = "Trains.findAll", query = "select t from Train as t"),
+        @NamedQuery(name = "Trains.findAllCount", query = "select count(t) from Train as t")
 })
 @Table(name = "trains")
 @Getter @Setter

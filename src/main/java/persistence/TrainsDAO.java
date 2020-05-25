@@ -20,6 +20,10 @@ public class TrainsDAO implements Serializable {
         return em.createNamedQuery("Trains.findAll", Train.class).getResultList();
     }
 
+    public int loadAllCount() {
+        return ((Number)em.createNamedQuery("Trains.findAllCount").getSingleResult()).intValue();
+    }
+
     public Train findOne(Integer id){
         return em.find(Train.class, id);
     }

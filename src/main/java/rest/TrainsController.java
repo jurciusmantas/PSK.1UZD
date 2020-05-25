@@ -1,8 +1,6 @@
 package rest;
 
-import lombok.Getter;
-import lombok.Setter;
-import rest.contracts.TrainsDto;
+import rest.contracts.TrainsDTO;
 import services.trainService.ITrainService;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -17,15 +15,13 @@ import javax.ws.rs.core.Response;
 public class TrainsController {
 
     @Inject
-    @Setter
-    @Getter
     private ITrainService trainsService;
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") final int id) {
-        TrainsDto train = trainsService.getTrainById(id);
+        TrainsDTO train = trainsService.getTrainById(id);
         if (train == null)
             return Response.status(Response.Status.NOT_FOUND).build();
 
@@ -37,7 +33,7 @@ public class TrainsController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response update(@PathParam("id") final int id, TrainsDto train) {
+    public Response update(@PathParam("id") final int id, TrainsDTO train) {
         boolean success = trainsService.updateTrain(id, train);
         if (success)
             return Response.status(Response.Status.OK).build();
@@ -50,7 +46,7 @@ public class TrainsController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response create(TrainsDto train) {
+    public Response create(TrainsDTO train) {
         Integer newTrainId = trainsService.createTrain(train);
         if (newTrainId != -1)
             return Response.ok(Response.Status.OK).build();

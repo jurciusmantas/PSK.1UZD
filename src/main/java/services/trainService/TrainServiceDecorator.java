@@ -5,8 +5,8 @@ import entities.TrainAdditionalData;
 import entities.TrainAdditionalDataKey;
 import interceptors.Logged;
 import persistence.TrainsDAO;
-import rest.contracts.TrainAdditionalDataDto;
-import rest.contracts.TrainsDto;
+import rest.contracts.TrainAdditionalDataDTO;
+import rest.contracts.TrainsDTO;
 
 import javax.decorator.Decorator;
 import javax.decorator.Delegate;
@@ -26,11 +26,11 @@ public abstract class TrainServiceDecorator implements ITrainService {
     @Any
     private ITrainService trainService;
 
-    public int createTrain(TrainsDto train){
-        System.out.println("TrainServiceDecorator - createTrain");
+    @Logged
+    public int createTrain(TrainsDTO train){
         Integer newTrainId = trainService.createTrain(train);
 
-        List<TrainAdditionalDataDto> trainAddData = train.getAdditionalData();
+        List<TrainAdditionalDataDTO> trainAddData = train.getAdditionalData();
         if (newTrainId != -1 && trainAddData.size() > 0){
             List<TrainAdditionalData> newTrainAdditionalData = new ArrayList<>();
             Train newTrain = trainsDAO.findOne(newTrainId);
